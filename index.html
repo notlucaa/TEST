@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Argabim | Excellence en Ingénierie & Coordination Technique</title>
+
+    <!-- Fonts: Outfit (Main) & Inter (Secondary) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <meta name="description"
+        content="ARGABIM - Expertise en Ingénierie & Coordination Technique à Marseille. Conception BIM, audit technique et solutions durables pour vos projets de construction.">
+    <meta name="author" content="ARGABIM">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://argabim.fr">
+    <meta property="og:title" content="Argabim | Excellence en Ingénierie & Coordination Technique">
+    <meta property="og:description"
+        content="ARGABIM - Expertise en Ingénierie & Coordination Technique à Marseille. Conception BIM, audit technique et solutions durables pour vos projets de construction.">
+    <meta property="og:image" content="https://argabim.fr/20210624_110253.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://argabim.fr">
+    <meta property="twitter:title" content="Argabim | Excellence en Ingénierie & Coordination Technique">
+    <meta property="twitter:description"
+        content="ARGABIM - Expertise en Ingénierie & Coordination Technique à Marseille. Conception BIM, audit technique et solutions durables pour vos projets de construction.">
+    <meta property="twitter:image" content="https://argabim.fr/20210624_110253.jpg">
+
+    <!-- Styles -->
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="favicon.ico">
+
+
+    <!-- Supabase Library -->
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+    <!-- Three.js for 3D Animation -->
+    <script src="https://unpkg.com/three@0.160.0/build/three.min.js"></script>
+
+</head>
+
+<body>
+    <div id="scroll-progress"></div>
+
+    <!-- Sidebar Navigation Indicator -->
+    <div class="side-nav-container">
+        <a href="#home" class="side-dot" data-label="Accueil"></a>
+        <a href="#about" class="side-dot" data-label="Expertise"></a>
+        <a href="#services" class="side-dot" data-label="Services"></a>
+        <a href="#commitments" class="side-dot" data-label="Engagements"></a>
+        <a href="#process" class="side-dot" data-label="Méthode"></a>
+        <a href="#contact" class="side-dot" data-label="Contact"></a>
+    </div>
+
+    <!-- Navigation -->
+    <header id="main-nav">
+        <div class="container header-content">
+            <a href="#home" class="logo-wrap">
+                <img src="ARGA logo 0.bmp" alt="Argabim" height="40" width="40"
+                    style="display: block; object-fit: contain;">
+                <h1>ARGABIM</h1>
+            </a>
+            <nav>
+                <ul id="nav-links">
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#about">Expertise</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#process">Méthode</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <a href="#contact" class="btn btn-primary hide-mobile">Devis Gratuit</a>
+                <button class="menu-toggle" aria-label="Menu Mobile">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" style="position: relative;">
+            <canvas id="neural-canvas"
+                style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; opacity: 0.4;"></canvas>
+            <div class="hero-mesh"></div>
+            <div class="container">
+                <div class="hero-content" style="position: relative;">
+
+
+                    <span class="badge">Ingénierie de précision</span>
+                    <h2 style="min-height: 3.6rem;"><span id="hero-title" class="typing-cursor"></span></h2>
+                    <p>Accompagnement technique et coordination de maîtrise d'œuvre pour les projets architecturaux les
+                        plus ambitieux à Marseille.</p>
+                    <div class="cta-group">
+                        <a href="#services" class="btn btn-primary">Explorer nos services</a>
+                        <a href="#about" class="btn btn-outline">Notre vision →</a>
+                    </div>
+                </div>
+                <!-- 3D Object Absolute Positioning -->
+                <div id="building-3d-container"
+                    style="position: absolute; right: -5%; top: 50%; transform: translateY(-50%); width: 55%; height: 80vh; z-index: 1; pointer-events: all;">
+                </div>
+            </div>
+        </section>
+
+        <!-- About / Vision Section -->
+        <section id="about">
+            <div class="container fade-up"
+                style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start;">
+
+                <!-- Left Column: Badge and Text (Very tight spacing) -->
+                <div style="text-align: left;">
+                    <span class="badge"
+                        style="display: inline-block; font-size: 1.1rem; padding: 0.7rem 1.6rem; margin-bottom: 1.5rem;">Qui
+                        sommes-nous</span>
+                    <p
+                        style="font-size: 1.15rem; line-height: 1.9; color: var(--text-med); margin: 0; font-weight: 400;">
+                        ARGABIM est bien plus qu'un bureau d'études. Basés au cœur de Marseille (13013), nous sommes
+                        le pivot central entre la vision architecturale et la réalité structurelle. Sous l'impulsion
+                        d'Erwan DUPONT-HUIN, notre équipe transforme les défis techniques en solutions fluides.
+                    </p>
+                </div>
+
+                <!-- Right Column: Title and Stats (Lowered) -->
+                <div
+                    style="text-align: right; display: flex; flex-direction: column; align-items: flex-end; gap: 2.5rem; margin-top: 0;">
+                    <h2 class="section-title"
+                        style="margin: 0; text-align: right; max-width: 800px; line-height: 1.2; font-size: 3rem;">
+                        La Rigueur au service <br>
+                        de la <span class="gradient-text">Créativité</span>
+                    </h2>
+
+                    <div style="display: flex; gap: 3rem; justify-content: flex-end; align-items: flex-start;">
+                        <div class="stat-item"
+                            style="text-align: right; border-right: 2px solid var(--primary); padding-right: 1.5rem; padding-left: 0; background: none; box-shadow: none; margin: 0;">
+                            <h4 style="font-size: 2.5rem; margin-bottom: 0.5rem;">1+</h4>
+                            <p style="color: var(--text-med); font-weight: 600;">An d'Excellence</p>
+                        </div>
+                        <div class="stat-item"
+                            style="text-align: right; border-right: 2px solid var(--accent); padding-right: 1.5rem; padding-left: 0; background: none; box-shadow: none; margin: 0;">
+                            <h4 style="font-size: 2.5rem; margin-bottom: 0.5rem;">100%</h4>
+                            <p style="color: var(--text-med); font-weight: 600;">Marseille Local</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <div class="container">
+                <div class="section-head fade-up">
+                    <span class="badge">Nos Compétences</span>
+                    <h2 class="section-title">Des Solutions <span class="gradient-text">Intégrales</span></h2>
+                </div>
+
+                <div class="services-grid">
+                    <!-- Card 1 -->
+                    <div class="service-flip-container fade-up" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="card-front">
+                                <div class="icon-box" style="transform: scale(1.5); margin-bottom: 2rem;">⏱️</div>
+                                <h3 style="text-align: center; margin: 0;">Gestion & Délais</h3>
+                            </div>
+                            <div class="card-back">
+                                <p style="font-size: 1.15rem; line-height: 1.6; text-align: center;">Maîtrise absolue du
+                                    planning opérationnel pour garantir une livraison sans compromis, même sur les
+                                    projets les plus tendus.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="service-flip-container fade-up" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="card-front">
+                                <div class="icon-box" style="transform: scale(1.5); margin-bottom: 2rem;">🔗</div>
+                                <h3 style="text-align: center; margin: 0;">Interfaçage</h3>
+                            </div>
+                            <div class="card-back">
+                                <p style="font-size: 1.15rem; line-height: 1.6; text-align: center;">Coordination
+                                    stratégique entre tous les corps d'état. Nous parlons le langage des architectes
+                                    comme celui des ingénieurs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="service-flip-container fade-up" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="card-front">
+                                <div class="icon-box" style="transform: scale(1.5); margin-bottom: 2rem;">🏗️</div>
+                                <h3 style="text-align: center; margin: 0;">Coordination</h3>
+                            </div>
+                            <div class="card-back">
+                                <p style="font-size: 1.15rem; line-height: 1.6; text-align: center;">Pilotage complet du
+                                    cycle de vie constructif, assurant une conformité parfaite avec les études
+                                    techniques initiales.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="service-flip-container fade-up" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="card-front">
+                                <div class="icon-box" style="transform: scale(1.5); margin-bottom: 2rem;">🛡️</div>
+                                <h3 style="text-align: center; margin: 0;">Évaluation Technique</h3>
+                            </div>
+                            <div class="card-back">
+                                <p style="font-size: 1.15rem; line-height: 1.6; text-align: center;">Analyse de risques
+                                    et résolution de points de blocage complexes directement sur site avec une
+                                    réactivité totale.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 5 -->
+                    <div class="service-flip-container fade-up" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="card-front">
+                                <div class="icon-box" style="transform: scale(1.5); margin-bottom: 2rem;">🎓</div>
+                                <h3 style="text-align: center; margin: 0;">Formation BIM</h3>
+                            </div>
+                            <div class="card-back">
+                                <p style="font-size: 1.15rem; line-height: 1.6; text-align: center;">Accompagnement des
+                                    équipes dans la transition numérique et l'adoption des standards de modélisation
+                                    avancés.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Card 6 -->
+                    <div class="service-flip-container fade-up" onclick="this.classList.toggle('flipped')">
+                        <div class="flipper">
+                            <div class="card-front">
+                                <div class="icon-box" style="transform: scale(1.5); margin-bottom: 2rem;">📊</div>
+                                <h3 style="text-align: center; margin: 0;">Optimisation Coûts</h3>
+                            </div>
+                            <div class="card-back">
+                                <p style="font-size: 1.15rem; line-height: 1.6; text-align: center;">Ingénierie de la
+                                    valeur pour réduire les dépenses sans impacter la qualité structurelle ou
+                                    l'esthétique finale.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Commitments Section -->
+        <section id="commitments" style="background: var(--bg-deep);">
+            <div class="container">
+                <div class="contact-flex">
+                    <div class="fade-up">
+                        <span class="badge">Pourquoi nous</span>
+                        <h2 class="section-title">Nos <span class="gradient-text">Engagements</span></h2>
+                        <p style="margin-top: 2rem;">Nous ne nous contentons pas de bâtir des structures, nous bâtissons
+                            des relations de confiance durables basées sur trois piliers fondamentaux.</p>
+                    </div>
+                    <div class="commitments-list">
+                        <div class="commitment-item fade-up">
+                            <div class="commit-icon">⚖️</div>
+                            <div>
+                                <h3>Conformité Absolue</h3>
+                                <p>Garantie d'un respect total des normes de sécurité et des réglementations d'urbanisme
+                                    en vigueur.</p>
+                            </div>
+                        </div>
+                        <div class="commitment-item fade-up">
+                            <div class="commit-icon">🚀</div>
+                            <div>
+                                <h3>Réactivité Totale</h3>
+                                <p>Une équipe mobile et disponible, capable d'intervenir sur site en moins de 24h pour
+                                    les urgences techniques.</p>
+                            </div>
+                        </div>
+                        <div class="commitment-item fade-up">
+                            <div class="commit-icon">♻️</div>
+                            <div>
+                                <h3>Vision Durable</h3>
+                                <p>Intégration systématique des solutions d'éco-conception pour des bâtiments pérennes
+                                    et économes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="process">
+            <div class="container">
+                <div class="section-head fade-up">
+                    <span class="badge">Notre Méthode</span>
+                    <h2 class="section-title">Un Processus <span class="gradient-text">Rigoureux</span></h2>
+                </div>
+
+                <div class="process-grid">
+                    <div class="process-card fade-up">
+                        <div class="process-num">01</div>
+                        <h3>Analyse & Audit</h3>
+                        <p>Étude approfondie des contraintes techniques, réglementations locales et faisabilité du
+                            projet pour poser des bases solides.</p>
+                        <div class="process-line"></div>
+                    </div>
+
+                    <div class="process-card fade-up">
+                        <div class="process-num">02</div>
+                        <h3>Ingénierie de Précision</h3>
+                        <p>Conception détaillée et modélisation technique. Nous optimisons chaque millimètre pour allier
+                            performance et esthétique.</p>
+                        <div class="process-line"></div>
+                    </div>
+
+                    <div class="process-card fade-up">
+                        <div class="process-num">03</div>
+                        <h3>Pilotage Stratégique</h3>
+                        <p>Coordination des différents corps d'état et gestion proactive du planning pour éviter tout
+                            point de blocage sur votre chantier.</p>
+                        <div class="process-line"></div>
+                    </div>
+
+                    <div class="process-card fade-up">
+                        <div class="process-num">04</div>
+                        <h3>Excellence Finale</h3>
+                        <p>Contrôles rigoureux de conformité et accompagnement jusqu'à la livraison finale. Votre
+                            satisfaction est notre signature.</p>
+                        <div class="process-line"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="container">
+                <div class="contact-flex">
+                    <div class="contact-text fade-up">
+                        <span class="badge">Contact</span>
+                        <h2 class="section-title">Donnons vie à vos <span class="gradient-text">Ambitions</span></h2>
+                        <ul class="info-list">
+                            <li>
+                                <span class="info-icon">📧</span>
+                                <div>
+                                    <strong>Email Professionnel</strong>
+                                    <p>contact@argabim.fr</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="info-icon">📞</span>
+                                <div>
+                                    <strong>Ligne Directe</strong>
+                                    <p>06 58 83 18 66</p>
+                                </div>
+                            </li>
+                            <li>
+                                <span class="info-icon">📍</span>
+                                <div>
+                                    <strong>Bureau</strong>
+                                    <p>Marseille (13013), France</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="contact-card fade-up" style="background: var(--bg-surface);">
+                        <form id="quote-form">
+                            <div
+                                style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;">
+                                <div>
+                                    <label for="first_name">Prénom</label>
+                                    <input type="text" id="first_name" name="first_name" required placeholder="Jean">
+                                </div>
+                                <div>
+                                    <label for="last_name">Nom</label>
+                                    <input type="text" id="last_name" name="last_name" required placeholder="Dupont">
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 1.5rem;">
+                                <label for="email">Votre Email</label>
+                                <input type="email" id="email" name="email" required placeholder="votre@email.fr">
+                            </div>
+                            <div style="margin-bottom: 2rem;">
+                                <label for="message">Détails du projet</label>
+                                <textarea id="message" name="message" rows="4" required
+                                    placeholder="Décrivez vos besoins techniques..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">Envoyer la
+                                demande</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 5rem 0; background: var(--bg-deep); border-top: 1px solid var(--border-light);">
+        <div class="container" style="text-align: center;">
+            <p style="color: var(--text-low); font-size: 0.9rem;">&copy; 2024 ARGABIM. Tous droits réservés.
+                L'excellence technique au cœur du bâti.</p>
+        </div>
+    </footer>
+
+    <button id="back-to-top" title="Retour en haut">↑</button>
+
+    <!-- Scripts -->
+    <script src="script.js"></script>
+</body>
+
+</html>

@@ -4,21 +4,27 @@
 */
 
 :root {
-    /* Color Palette - Optimized with the vibrant "Argabim" Teal & Gold */
-    --primary: #44B79A;
-    --primary-bright: #67CDB6;
-    --primary-dark: #266253;
-    --accent: #ABA38D;
-    --bg-deep: #050807;
-    --bg-surface: #0E1412;
-    --bg-card: rgba(255, 255, 255, 0.03);
+    /* Color Palette - Optimized: Vibrant "Argabim" Teal & Luminous Gold */
+    --primary: #00E0C6;
+    /* Ultra-bright Teal */
+    --primary-bright: #6FFFE9;
+    /* Neon Mint */
+    --primary-dark: #008F7A;
+    /* Deep Emerald */
+    --accent: #FFD166;
+    /* Luminous Gold */
+    --bg-deep: #020403;
+    /* Void Green-Black */
+    --bg-surface: #08100D;
+    /* Dark Jadestone */
+    --bg-card: rgba(0, 224, 198, 0.03);
 
     /* Semantic Colors */
     --text-high: #ffffff;
     --text-med: #cbd5e0;
     --text-low: #718096;
-    --border-light: rgba(68, 183, 154, 0.15);
-    --border-active: rgba(68, 183, 154, 0.4);
+    --border-light: rgba(0, 224, 198, 0.15);
+    --border-active: rgba(0, 224, 198, 0.5);
 
     /* Spacing & Transitions */
     --transition-fast: 0.2s ease;
@@ -100,7 +106,7 @@ section {
 .badge {
     display: inline-block;
     padding: 0.6rem 1.4rem;
-    background: rgba(68, 183, 154, 0.1);
+    background: rgba(0, 224, 198, 0.08);
     border: 1px solid var(--border-active);
     border-radius: 100px;
     color: var(--primary);
@@ -215,10 +221,10 @@ nav a:hover::after {
     left: 0;
     width: 0%;
     height: 4px;
-    background: #44B79A;
+    background: #00E0C6;
     /* Solid fallback for Chrome */
     background: var(--primary);
-    box-shadow: 0 2px 10px rgba(68, 183, 154, 0.6);
+    box-shadow: 0 0 15px rgba(0, 224, 198, 0.8);
     z-index: 99999;
     transition: width 0.1s ease-out;
 }
@@ -297,7 +303,7 @@ nav a:hover::after {
     right: -10%;
     width: 60%;
     height: 60%;
-    background: radial-gradient(circle, rgba(68, 183, 154, 0.15) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(0, 224, 198, 0.1) 0%, transparent 60%);
     filter: blur(60px);
     z-index: 0;
 }
@@ -411,13 +417,13 @@ nav a:hover::after {
     background: var(--primary);
     color: white;
     border: 1px solid var(--primary);
-    box-shadow: 0 10px 20px rgba(68, 183, 154, 0.2);
+    box-shadow: 0 0 20px rgba(0, 224, 198, 0.3);
 }
 
 .btn-primary:hover {
     background: var(--primary-bright);
     transform: translateY(-3px);
-    box-shadow: 0 15px 30px rgba(68, 183, 154, 0.4);
+    box-shadow: 0 0 35px rgba(0, 224, 198, 0.6);
 }
 
 /* --- Typewriter Effect --- */
@@ -546,7 +552,7 @@ nav a:hover::after {
 
 
 .service-flip-container:hover .card-front {
-    box-shadow: 0 15px 30px rgba(68, 183, 154, 0.2);
+    box-shadow: 0 20px 40px rgba(0, 224, 198, 0.15);
     border-color: var(--primary-bright);
 }
 
@@ -681,7 +687,7 @@ nav a:hover::after {
     font-size: 2rem;
     min-width: 60px;
     height: 60px;
-    background: rgba(68, 183, 154, 0.1);
+    background: rgba(0, 224, 198, 0.1);
     border-radius: 12px;
     display: flex;
     align-items: center;
@@ -735,7 +741,7 @@ nav a:hover::after {
 #quote-form textarea:focus {
     border-color: var(--primary);
     background: rgba(255, 255, 255, 0.05);
-    box-shadow: 0 0 0 4px rgba(68, 183, 154, 0.1);
+    box-shadow: 0 0 0 4px rgba(0, 224, 198, 0.15);
 }
 
 #quote-form label {

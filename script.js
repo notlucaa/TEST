@@ -239,7 +239,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // Dynamic shadow/glow
         const shadowX = (x - centerX) / 10;
         const shadowY = (y - centerY) / 10;
-        card.style.boxShadow = `${-shadowX}px ${-shadowY}px 20px rgba(68, 183, 154, 0.2)`;
+        card.style.boxShadow = `${-shadowX}px ${-shadowY}px 25px rgba(0, 224, 198, 0.25)`;
     }
 
     function resetTilt(e) {
@@ -283,7 +283,7 @@ document.addEventListener('DOMContentLoaded', () => {
             draw() {
                 ctx.beginPath();
                 ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = 'rgba(103, 205, 182, 0.5)';
+                ctx.fillStyle = 'rgba(111, 255, 233, 0.6)';
                 ctx.fill();
             }
         }
@@ -310,7 +310,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                     if (distance < 100) {
                         ctx.beginPath();
-                        ctx.strokeStyle = `rgba(103, 205, 182, ${1 - distance / 100})`;
+                        ctx.strokeStyle = `rgba(111, 255, 233, ${1 - distance / 100})`;
                         ctx.lineWidth = 0.5;
                         ctx.moveTo(particles[i].x, particles[i].y);
                         ctx.lineTo(particles[j].x, particles[j].y);
@@ -356,7 +356,9 @@ function init3DBuilding(retryCount = 0) {
     // --- MATERIALS ---
     // 1. Tech Wireframe (Cyan/Blue)
     const wireframeMaterial = new THREE.MeshBasicMaterial({
-        color: 0x44B79A,
+        color: 0x00E0C6,
+        emissive: 0x008F7A,
+        emissiveIntensity: 0.2,
         wireframe: true,
         transparent: true,
         opacity: 0.3
@@ -364,7 +366,7 @@ function init3DBuilding(retryCount = 0) {
 
     // 2. Solid Core (Dark Grey/Metal)
     const coreMaterial = new THREE.MeshStandardMaterial({
-        color: 0x22332E,
+        color: 0x1A2421,
         roughness: 0.4,
         metalness: 0.8,
         flatShading: true
@@ -372,7 +374,7 @@ function init3DBuilding(retryCount = 0) {
 
     // 3. Glowing Accents
     const glowMaterial = new THREE.MeshBasicMaterial({
-        color: 0xABA38D, // Gold accent
+        color: 0xFFD166, // Luminous Gold accent
         wireframe: true,
         transparent: true,
         opacity: 0.5
@@ -410,7 +412,7 @@ function init3DBuilding(retryCount = 0) {
 
     // Layer 4: Orbital Rings (Coordination)
     const ringGeo = new THREE.TorusGeometry(6, 0.05, 16, 100);
-    const ringMat = new THREE.MeshBasicMaterial({ color: 0x44554E, transparent: true, opacity: 0.3 });
+    const ringMat = new THREE.MeshBasicMaterial({ color: 0x2A403D, transparent: true, opacity: 0.4 });
 
     const ring1 = new THREE.Mesh(ringGeo, ringMat);
     ring1.rotation.x = Math.PI / 2;
@@ -426,11 +428,11 @@ function init3DBuilding(retryCount = 0) {
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
 
-    const dirLight1 = new THREE.DirectionalLight(0x44B79A, 2);
+    const dirLight1 = new THREE.DirectionalLight(0x00E0C6, 2.5);
     dirLight1.position.set(10, 10, 10);
     scene.add(dirLight1);
 
-    const dirLight2 = new THREE.DirectionalLight(0xABA38D, 2);
+    const dirLight2 = new THREE.DirectionalLight(0xFFD166, 2.5);
     dirLight2.position.set(-10, -10, 10);
     scene.add(dirLight2);
 
